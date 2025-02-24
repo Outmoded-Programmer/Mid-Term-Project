@@ -16,8 +16,9 @@ namespace Mid_Term_Project
 
             if (role.ToLower() == "admin")
             {
-                Admin admin = new Admin("Muhammad Shahzad");
-                Console.WriteLine($"Welcome Admin: {admin}");
+                Admin admin = new Admin(name: "Shahzad");
+                Console.WriteLine($"Welcome Admin:{admin.Name}");
+
                 while (true)
                 {
                     Console.WriteLine("\nAdmin Panel");
