@@ -8,7 +8,7 @@ namespace Mid_Term_Project
 {
     class Admin : User
     {
-        private List<Student> students = new List<Student>();
+        private readonly List<Student> students = new List<Student>();
 
         public Admin(string name)
         {
@@ -23,8 +23,23 @@ namespace Mid_Term_Project
 
         public void AddStudent(string studentName, int roomNumber)
         {
-            students.Add(new Student(studentName, roomNumber));
-            Console.WriteLine($"Student {studentName} added to Room {roomNumber}.");
+            int studentInRoom = 0;
+            foreach(var student in students)
+            {
+                if(student.RoomNumber == roomNumber)
+                {
+                    studentInRoom ++;
+                }
+            }
+            if (studentInRoom >= 2)
+            {
+                Console.WriteLine($"The room is occupied can not add {studentName} in room {roomNumber}");
+            }
+            else
+            {
+                students.Add(new Student(studentName, roomNumber));
+                Console.WriteLine($"Student {studentName} added to Room {roomNumber}.");
+            }
         }
 
         public void RemoveStudent(string studentName)
