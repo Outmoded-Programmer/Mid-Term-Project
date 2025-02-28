@@ -9,7 +9,7 @@ namespace Mid_Term_Project
     class Student : User
     {
         public int RoomNumber { get; private set; }
-        public Student(string name, int roomNumber)
+        public Student( string name, int roomNumber)
         {
             Name = name;
             Role = "Student";

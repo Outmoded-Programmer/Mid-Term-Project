@@ -8,12 +8,14 @@ namespace Mid_Term_Project
 {
     class Admin : User
     {
+        public string Password { get; set; }
         private readonly List<Student> students = new List<Student>();
 
-        public Admin(string name)
+        public Admin(string name , string password)
         {
             Name = name;
             Role = "Admin";
+            Password = password;
         }
 
         public override void DisplayInfo()

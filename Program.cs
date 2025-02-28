@@ -13,19 +13,31 @@ namespace Mid_Term_Project
 
             Console.Write("Enter your role (Admin/Student): ");
             string role = Console.ReadLine();
+            Admin admin = new Admin(name: "Shahzad", password: "123");
+            if (role.ToLower() == "admin")
+            {
+                Console.Write("Enter your Password: ");
+                string adminPassword = Console.ReadLine();
+                if(adminPassword != admin.Password) {
+                    Console.WriteLine("Wrong Password");
+                    return;
+                }
+            }
 
             if (role.ToLower() == "admin")
             {
-                Admin admin = new Admin(name: "Shahzad");
                 Console.WriteLine($"Welcome Admin:{admin.Name}");
 
+                Attendance attendance = new Attendance();
+                 
                 while (true)
                 {
                     Console.WriteLine("\nAdmin Panel");
                     Console.WriteLine("1. Add Student");
                     Console.WriteLine("2. Remove Student");
                     Console.WriteLine("3. List Students");
-                    Console.WriteLine("4. Exit");
+                    Console.WriteLine("4. Attendence");
+                    Console.WriteLine("5. Exit");
                     Console.Write("Choose an option: ");
 
                     string choice = Console.ReadLine();
@@ -47,6 +59,13 @@ namespace Mid_Term_Project
                             admin.ListStudents();
                             break;
                         case "4":
+                            Console.WriteLine("Enter student name for attendence mark");
+                            string attendenceName = Console.ReadLine();
+                            Console.WriteLine("Is the student present? (true/ false):");
+                            bool isPresent = Convert.ToBoolean(Console.ReadLine());
+                            attendance.MarkAttendance(attendenceName, isPresent);
+                            break;
+                        case "5":
                             return;
                         default:
                             Console.WriteLine("Invalid option, please try again.");
@@ -69,8 +88,8 @@ namespace Mid_Term_Project
                     {
                         case "1":
                             IPayment payment = new FeePayment();
-                            double pay = Convert.ToDouble(Console.ReadLine());
                             Console.WriteLine("Enter the payment to be proccessed");
+                            double pay = Convert.ToDouble(Console.ReadLine());
                             payment.ProcessPayment(pay);
                             break;
                         case "2":
@@ -79,7 +98,8 @@ namespace Mid_Term_Project
                             string complaint = Console.ReadLine();
                             complaintService.RegisterComplaint(complaint);
                             break;
-                        case "3":
+  
+                        case "4":
                             return;
                         default:
                             Console.WriteLine("Invalid option, please try again.");
