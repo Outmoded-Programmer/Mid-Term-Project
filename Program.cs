@@ -69,7 +69,9 @@ namespace Mid_Term_Project
                     {
                         case "1":
                             IPayment payment = new FeePayment();
-                            payment.ProcessPayment(5000);
+                            double pay = Convert.ToDouble(Console.ReadLine());
+                            Console.WriteLine("Enter the payment to be proccessed");
+                            payment.ProcessPayment(pay);
                             break;
                         case "2":
                             IComplaintHandling complaintService = new ComplaintService();
